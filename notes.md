@@ -29,7 +29,7 @@ range is a python in built class
 for i in range(n):
 for x in arr:
 for i, x in enumerate(nums):
-
+for key in map:
 ...
 
 [0] * 26 # works for primitive
@@ -65,6 +65,13 @@ import numpy as np
 numpy_array_2d = np.array([[1, 2, 3], [4, 5, 6]])
 ```
 
+# math:
+max_val = max(a, b)
+max_val = max(my_list)
+longest_string = max(my_string_list, key=len)
+map_largest_key = max(my_map)
+map_largets_val = max(my_map, key=lambda k: map[k])
+
 # collections
 Built-in: list, dict, set, tuple "immutable"
 collections module (standard library): deque, Counter, defaultdict, OrderedDict (mostly historical now), namedtuple
@@ -95,20 +102,10 @@ stack.append(ch)
 stack.pop()
 "".join(stack) # stack to str
 ```
-
-# deque:
-```
-from collections import deque
-
-q = deque(i for i in range(n) if deg[i] == 1)
-...
-q = deque()
-q.append(x)
-x = q.popleft()
-...
-sz = len(q)
-list(q)
-```
+# set:
+my_set.update(list_to_add)
+my_set |= set(my_list)
+my_set.add(elem)
 
 # hashmap:
 ```
@@ -137,6 +134,20 @@ heapq # python's min-heap
 import heapq
 heapq.heappush(h, x)
 x = heapq.heappop(h)
+```
+
+# deque:
+```
+from collections import deque
+
+q = deque(i for i in range(n) if deg[i] == 1)
+...
+q = deque()
+q.append(x)
+x = q.popleft()
+...
+sz = len(q)
+list(q)
 ```
 
 # comprehensions:
