@@ -1,15 +1,15 @@
-# if exists:
+# if exists
 ```
 if key in d:
 if x:
 ```
 
-# conversion:
+# conversion
 ```
 third = str(int(first) + int(second))
 ```
 
-# str:
+# str
 ```
 s = ""
 last_char = s[-1]
@@ -18,14 +18,21 @@ s[a:b]    # b excluded
 idx = ord(c) - ord('a') # Python string/char math: c - 'a' doesn’t work in Python (chars aren’t ints). 
 ```
 
-# loop styles:
+# math
+max_val = max(a, b)
+max_val = max(my_list)
+longest_string = max(my_string_list, key=len)
+map_largest_key = max(my_map)
+map_largets_val = max(my_map, key=lambda k: map[k])
+
+# loop styles
+
+## range
+range is a python in built class
 ```
 range(n)  -> [0, n)
 range(0, n) -> [0, n)
-```
-# range:
-range is a python in built class
-```
+...
 for i in range(n):
 for x in arr:
 for i, x in enumerate(nums):
@@ -37,7 +44,15 @@ for key in map:
 [{}] * 26 
 [set()] * 26
 ```
-# arr:
+
+# collections
+Built-in: list, dict, set, tuple "immutable"
+collections module (standard library): deque, Counter, defaultdict, OrderedDict (mostly historical now), namedtuple
+itertools module (iterables - sorting, grouping, chaining): chain, product, groupby, islice
+collections.abc (Typed/abstract interfaces): Iterable, Mapping, Sequence
+built-in functions: sorted(), min(), max(), plus modules like itertools.
+
+## arr
 Python lists function as arrays - can store items of mixed types.
 ```
 my_list = [10, 20, 30, 40, 50]
@@ -65,21 +80,7 @@ import numpy as np
 numpy_array_2d = np.array([[1, 2, 3], [4, 5, 6]])
 ```
 
-# math:
-max_val = max(a, b)
-max_val = max(my_list)
-longest_string = max(my_string_list, key=len)
-map_largest_key = max(my_map)
-map_largets_val = max(my_map, key=lambda k: map[k])
-
-# collections
-Built-in: list, dict, set, tuple "immutable"
-collections module (standard library): deque, Counter, defaultdict, OrderedDict (mostly historical now), namedtuple
-itertools module (iterables - sorting, grouping, chaining): chain, product, groupby, islice
-collections.abc (Typed/abstract interfaces): Iterable, Mapping, Sequence
-built-in functions: sorted(), min(), max(), plus modules like itertools.
-
-# sort vs sorted:
+## sort vs sorted
 ```
 arr.sort()            # in-place
 the_list.sort(key = lambda x: abs(x-50))
@@ -95,19 +96,19 @@ tuple = (4,3,2,1)
 sorted_tuple = sorted(tuple)
 ```
 
-# list:
+## list
 ```
 stack = []
 stack.append(ch)
 stack.pop()
 "".join(stack) # stack to str
 ```
-# set:
+## set
 my_set.update(list_to_add)
 my_set |= set(my_list)
 my_set.add(elem)
 
-# hashmap:
+## hashmap
 ```
 map = {}
 map["key"] = val
@@ -128,7 +129,7 @@ d["a"] += 1
 from collections import Counter
 freq = Counter(arr) # freq is a map 
 ```
-# heap
+## heap
 heapq # python's min-heap 
 ```
 import heapq
@@ -136,7 +137,7 @@ heapq.heappush(h, x)
 x = heapq.heappop(h)
 ```
 
-# deque:
+## deque
 ```
 from collections import deque
 
@@ -150,23 +151,32 @@ sz = len(q)
 list(q)
 ```
 
-# comprehensions:
+## comprehensions
 ```
 [print(x) for x in the_list]
 [x for x in employees if "su" in x]
 [x if x == 'banana'  else x for x in fruits]
 ```
 
-# lambdas:
+## Iterator
+```
+iter()
+__iter__()
+__next__()
+
+StopIteration
+```
+
+# lambdas
 ```
 lambda x, y : x+y
 ```
 
-# generators:
+# generators
 yield and execution is paused & state is saved
 use next() to get the next value
 
-# OOPS:
+# OOPS
 dunder methods in python oops
 
 self -> for providing behavior methods
@@ -180,25 +190,16 @@ pass
 
 super().__init__()  --> overide but call super implementation
 
-# Iterator:
-```
-iter()
-__iter__()
-__next__()
-
-StopIteration
-```
-
-# polymorphism:
+## polymorphism
 function poly like  len()
 class poly like multiple classes with same method name
 inheritance class poly
 
-# variable scope:
+## variable scope
 global
 nonlocal --> nested functions
 
-# closure:
+## closure
 - nested functions & lambdas use closure mechanism
 - the outer variables are called free variables
 - Late Binding:
@@ -214,37 +215,70 @@ nonlocal --> nested functions
 
 - resolution process is called lexical/static scoping
 
-# decorators:
+# decorators
 use @ to decorate a method with the decorated method
 
-# modules:
-import
-from import as 
+# modules
+- A Python module is simply a .py file. The file name (without the extension) is the module name
 
+## package
+- A Python package is a directory that contains multiple modules and potentially sub-packages
+- __init__.py => file in a directory is optional
+
+## How to use modules (import)
+**Importing:** You use the import keyword to bring a module's contents into your current file
+import my_module
+
+**Selective Imports:** You can import specific items using from ... import ...
+from my_module import function as alias
+
+**Hierarchical Import:** use dot notation
+import myapp.utils.logic
+Usage: myapp.utils.logic.my_func()
+
+import myapp.utils.logic as log
+Usage: log.my_func().
+
+from myapp.utils import logic
+Usage: logic.my_func()
+
+## example: importing a class from a file
+```
+file: range_sum_mutable.py
+
+class NumArray:
+
+... And you’d import it like 
+
+from range_sum_mutable import NumArray
+```
+## built-in modules
 datetime
 json
 math
-re --> regex
-    findall
-    search
-    match object
-    sub
+re (regex)
+    findall()
+    search()
+    returns a match object
+    sub()
 
-** once imported you can change the method definition 
-eg:assign math.sqrt with a new def the scope will be limited to your file
-direct method import from eg: from math import sqrt won't be affected
+## monkey patching
+* If you do:
+```
+import math
+...
+You can re-assign things like math.sqrt = my_func in your file, and it only affects your local reference.
+```
 
-# package:
-all files for a module
+* But if you do:
 
-# how to import?
-range_sum_mutable.py
-class NumArray:
+```
+from math import sqrt
+...
+That imported sqrt name won’t change even if later you modify math.sqrt.
+```
 
-And you’d import it like:
-from range_sum_mutable import NumArray
-
-# exceptions:
+# exceptions
 1) handle exceptions:
 
     try:
@@ -263,16 +297,16 @@ from range_sum_mutable import NumArray
     if x < 0:
       raise Exception("Sorry, no numbers below zero")
 
-# formatted strings:
+# formatted strings
 f strings
 print(f"price is {price:,}")
 
 str format with index & named index
 
-# user prompt:
+# user prompt
 user input is via input()
 
-# venv:
+# venv
 a separate python env for each project
  - the built-in, lightweight solution
  - manual control over env creation:
@@ -284,7 +318,7 @@ a separate python env for each project
 
 others: pipenv, poetry
 
-# pipenv:
+# pipenv
  - Combines virtual environment and package management
  - Automatic environment creation outside the project folder
  - Declarative dependency management with Pipfile and Pipfile.lock instead of requirements.txt
@@ -316,10 +350,10 @@ others: pipenv, poetry
    - vulnerability scanning
      - pipenv check
 
-# conventions:
+# conventions
 - A leading underscore (like _dfs) means: “internal/helper method, not part of the public API.”
 - Common Python convention:
   Module/file: descriptive, snake_case (what the module is about)
   Class: PascalCase (the type it defines)
 
-# concurrency, parallelism & async:
+# concurrency, parallelism & async
