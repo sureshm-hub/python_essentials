@@ -1,0 +1,22 @@
+# --- Virtual environments ---
+venv/
+.venv/
+
+# --- IntelliJ / PyCharm ---
+.idea/
+*.iml
+
+# --- Build / artifacts (generic) ---
+artifacts/
+dist/
+build/
+out/
+*.egg-info/
+
+# --- Python cache / compiled ---
+__pycache__/
+*.py[cod]
+
+# --- OS junk ---
+.DS_Store
+Thumbs.db
