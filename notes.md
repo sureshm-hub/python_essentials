@@ -18,15 +18,27 @@ s[a:b]    # b excluded
 idx = ord(c) - ord('a') # Python string/char math: c - 'a' doesn’t work in Python (chars aren’t ints). 
 ```
 
-# range:
-range is a python in built class
+# loop styles:
 ```
 range(n)  -> [0, n)
 range(0, n) -> [0, n)
 ```
+# range:
+range is a python in built class
+```
+for i in range(n):
+for x in arr:
+for i, x in enumerate(nums):
 
+...
+
+[0] * 26 # works for primitive
+[[] for _ in range(n)] -vs- [[]] * 26 # same list shared across all indices 
+[{}] * 26 
+[set()] * 26
+```
 # arr:
-Python lists are a versatile, built-in data structure that can function as arrays, though they can store items of mixed types.
+Python lists function as arrays - can store items of mixed types.
 ```
 my_list = [10, 20, 30, 40, 50]
 my_list.append(60) # Adds 60 to the end
@@ -46,11 +58,20 @@ my_array = arr.array('i', [1, 2, 3, 4, 5])
 ```
 
 ## numpy
-The NumPy library is the standard for numerical operations in Python, offering powerful, multi-dimensional array objects (ndarray).
+The NumPy library is the standard for numerical operations in Python, offering powerful, multidimensional array objects (ndarray).
+
 import numpy as np
 ``` Create a 2D array (matrix)
 numpy_array_2d = np.array([[1, 2, 3], [4, 5, 6]])
 ```
+
+# collections
+Built-in: list, dict, set, tuple "immutable"
+collections module (standard library): deque, Counter, defaultdict, OrderedDict (mostly historical now), namedtuple
+itertools module (iterables - sorting, grouping, chaining): chain, product, groupby, islice
+collections.abc (Typed/abstract interfaces): Iterable, Mapping, Sequence
+built-in functions: sorted(), min(), max(), plus modules like itertools.
+
 # sort vs sorted:
 ```
 arr.sort()            # in-place
@@ -63,7 +84,7 @@ fruits.sort(key = str.lower)
 ```
 sorted works on more than lists
 ```
-tuple = (4,3,2,1)
+tuple = (4,3,2,1) 
 sorted_tuple = sorted(tuple)
 ```
 
@@ -116,13 +137,6 @@ heapq # python's min-heap
 import heapq
 heapq.heappush(h, x)
 x = heapq.heappop(h)
-```
-
-# loop styles:
-```
-for i in range(n):
-for x in arr:
-for i, x in enumerate(nums):
 ```
 
 # comprehensions:

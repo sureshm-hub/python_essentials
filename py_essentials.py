@@ -18,8 +18,8 @@ print(a[1])
 print(d[1])
 
 d1 = [[1,2,3],[4,5,6],[7,8,9]]
-d5 = copy.copy(d1)
-d2 = copy.deepcopy(d1)
+d5 = copy.copy(d1) # Shallow: copies outer list
+d2 = copy.deepcopy(d1) # Deep: copies inner lists too
 d2[1][1] = 'X'
 
 print(d1[1][1])
@@ -29,7 +29,7 @@ print(d5[1][1])
 e = a[:]
 print(e)
 
-# list append , extend
+# list append, extend
 a.append([5,6])
 print(a)
 
@@ -84,8 +84,8 @@ def append_val_noMutation(lst=None):
         lst = []
     lst.append(1)
     return lst
-print(append_val_noMutation())
-print(append_val_noMutation())
+print(append_val_noMutation()) # [1]
+print(append_val_noMutation()) # [1]
 
 tuple = (1,)
 print("type of tuple >> ", type(tuple), tuple)
