@@ -18,12 +18,24 @@ s[a:b]    # b excluded
 idx = ord(c) - ord('a') # Python string/char math: c - 'a' doesn’t work in Python (chars aren’t ints). 
 ```
 
+# formatted strings
+f strings
+```
+print(f"price is {price:,}")
+```
+- str format with index & named index
+
+# user prompt
+user input is via input()
+
 # math
+```
 max_val = max(a, b)
 max_val = max(my_list)
 longest_string = max(my_string_list, key=len)
 map_largest_key = max(my_map)
 map_largets_val = max(my_map, key=lambda k: map[k])
+```
 
 # loop styles
 
@@ -104,9 +116,11 @@ stack.pop()
 "".join(stack) # stack to str
 ```
 ## set
+```
 my_set.update(list_to_add)
 my_set |= set(my_list)
 my_set.add(elem)
+```
 
 ## hashmap
 ```
@@ -207,6 +221,7 @@ nonlocal --> nested functions
     - They are bound when the closure is called
     - this includes primitives as well (hene closure captures variables by reference instead of value)
     - To capture by value (or effectively "snapshot" the value) "use a default argument in the inner function, as default arguments are evaluated when the function is"
+  
     | Version           | Meaning                                            | Works with `f()`?               |
     | ----------------- | -------------------------------------------------- | --------------------------------|
     | `lambda x: x * 2` | Takes input `x`, returns `x * 2`                   | ❌ needs argument               |
@@ -226,13 +241,17 @@ use @ to decorate a method with the decorated method
 - __init__.py => file in a directory is optional
 
 ## How to use modules (import)
-**Importing:** You use the import keyword to bring a module's contents into your current file
+- **Importing:** You use the import keyword to bring a module's contents into your current file
+```
 import my_module
-
-**Selective Imports:** You can import specific items using from ... import ...
+```
+- **Selective Imports:** You can import specific items using from ... import ...
+```
 from my_module import function as alias
+```
 
-**Hierarchical Import:** use dot notation
+- **Hierarchical Import:** use dot notation
+```
 import myapp.utils.logic
 Usage: myapp.utils.logic.my_func()
 
@@ -241,6 +260,7 @@ Usage: log.my_func().
 
 from myapp.utils import logic
 Usage: logic.my_func()
+```
 
 ## example: importing a class from a file
 ```
@@ -253,14 +273,14 @@ class NumArray:
 from range_sum_mutable import NumArray
 ```
 ## built-in modules
-datetime
-json
-math
-re (regex)
-    findall()
-    search()
-    returns a match object
-    sub()
+- datetime
+- json
+- math
+- re (regex)
+    * findall()
+    * search()
+    * returns a match object
+    * sub()
 
 ## monkey patching
 * If you do:
@@ -279,32 +299,27 @@ That imported sqrt name won’t change even if later you modify math.sqrt.
 ```
 
 # exceptions
-1) handle exceptions:
+* handle exceptions:
 
-    try:
-        print(x)
-    except NameError:
-        print("Variable x is not defined")
-    except:
-        print("Something else went wrong")
-    else:
-        print("Nothing went wrong")
-    finally:
-        print("The 'try except' is finished")
+```
+try:
+    print(x)
+except NameError:
+    print("Variable x is not defined")
+except:
+    print("Something else went wrong")
+else:
+    print("Nothing went wrong")
+finally:
+    print("The 'try except' is finished")
+```
 
-2) raise Exception: 
+* raise Exception: 
 
-    if x < 0:
-      raise Exception("Sorry, no numbers below zero")
-
-# formatted strings
-f strings
-print(f"price is {price:,}")
-
-str format with index & named index
-
-# user prompt
-user input is via input()
+```
+if x < 0:
+  raise Exception("Sorry, no numbers below zero")
+```
 
 # venv
 a separate python env for each project
@@ -316,7 +331,7 @@ a separate python env for each project
    - rely on pip to install packages
    - pip freeze > requirements.tx
 
-others: pipenv, poetry
+**others:** pipenv, poetry
 
 # pipenv
  - Combines virtual environment and package management
@@ -353,7 +368,7 @@ others: pipenv, poetry
 # conventions
 - A leading underscore (like _dfs) means: “internal/helper method, not part of the public API.”
 - Common Python convention:
-  Module/file: descriptive, snake_case (what the module is about)
-  Class: PascalCase (the type it defines)
+  * Module/file: descriptive, snake_case (what the module is about)
+  * Class: PascalCase (the type it defines)
 
 # concurrency, parallelism & async
