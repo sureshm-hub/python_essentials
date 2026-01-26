@@ -1,7 +1,21 @@
+# operators
+```
+//: This is the floor division operator in Python. 
+It divides the number and rounds down to the nearest whole integer
+
+ex: 5 // 2 = 2
+```
+
 # if exists
 ```
 if key in d:
 if x:
+```
+
+# ternary
+```
+age = 25
+status = "Adult" if age >= 18 else "Minor"
 ```
 
 # conversion
@@ -21,6 +35,7 @@ idx = ord(c) - ord('a') # Python string/char math: c - 'a' doesn’t work in Pyt
 # formatted strings
 f strings
 ```
+price = 5000000
 print(f"price is {price:,}")
 ```
 - str format with index & named index
@@ -42,13 +57,19 @@ map_largets_val = max(my_map, key=lambda k: map[k])
 ## range
 range is a python in built class
 ```
-range(n)  -> [0, n)
-range(0, n) -> [0, n)
+range(n)  # [0, n)
+range(0, n) # [0, n)
+range (n - 1, -1, -1) # (n, 0]
 ...
 for i in range(n):
 for x in arr:
 for i, x in enumerate(nums):
 for key in map:
+# Iterate with 'i' from 0-2 and 'j' from 10-12 in parallel
+for i, j in zip(range(3), range(10, 13)):
+    print(f"i: {i}, j: {j}")
+
+
 ...
 
 [0] * 26 # works for primitive
