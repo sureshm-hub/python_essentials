@@ -9,11 +9,7 @@ class ListNode:
 
 class Solution:
     def oddEvenList(self, head: Optional[ListNode]) -> Optional[ListNode]:
-        odd = ListNode()
-        temp_odd = odd
-        even = ListNode()
-        temp_even = even
-        cur = head
+        odd = temp_odd = ListNode(); even = temp_even = ListNode(); cur = head
         idx = 1
         while cur:
             if idx % 2 == 1:
