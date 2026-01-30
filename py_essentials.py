@@ -38,7 +38,7 @@ print(a)
 
 a.extend([5,6])
 print(a)
-
+print("arr splice")
 h =  a[0:len(a)-1:2]
 print(h)
 
@@ -87,8 +87,8 @@ def append_val_noMutation(lst=None):
 print(append_val_noMutation()) # [1]
 print(append_val_noMutation()) # [1]
 
-tuple = (1,)
-print("type of tuple >> ", type(tuple), tuple)
+my_tuple = (1,)
+print("type of tuplemy_tuple ", type(my_tuple), my_tuple)
 
 # {expression for item in iterable} - set comprehension unique and unordered
 result = {i+1 for i in range(10) if i%2 == 0}
@@ -117,6 +117,11 @@ for num in even_nums_gen:
     print(num, end = " >> ")
 print()
 print("type of even_nums_gen >> ", type(even_nums_gen))
+
+# generator comprehension to tuple
+odd_nums_gen = (x for x in range(10) if x % 2 == 1)
+my_tuple = tuple(odd_nums_gen)
+print(my_tuple)
 
 # dummy generator
 dummy_gen = (x for x in range(5) if x == 0 or x == 1 )
@@ -208,6 +213,7 @@ print(f"price for 2 items is { 2 * price}")
 print(f"price is {price:.3f}")
 
 # boolean
+print("bool evaluates to True")
 print(bool("hello"))
 print(bool("0"))
 print(bool(15))
@@ -233,6 +239,8 @@ for _ in range(10):
     print(next(fib_series), end=">>")
 else:
     print(next(fib_series))
+
+print("outside for fib_series")
 print(next(fib_series))
 
 # iterator

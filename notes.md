@@ -10,6 +10,7 @@ ex: 5 // 2 = 2
 ```
 if key in d:
 if x:
+if not stack:  # same as java if(stack.isEmpty())
 ```
 
 # ternary
@@ -92,6 +93,7 @@ my_list = [10, 20, 30, 40, 50]
 my_list.append(60) # Adds 60 to the end
 my_list.insert(1, 15) # Inserts 15 at index 1
 my_list.reverse()
+my_list.append([60, 70]) vs my_list.extend([60, 70])
 ```
 
 large arrays of a single, primitive data type (like integers or floats), the array module is more memory-efficient than a list.
@@ -179,8 +181,9 @@ from collections import deque
 q = deque(i for i in range(n) if deg[i] == 1)
 ...
 q = deque()
-q.append(x)
-x = q.popleft()
+q.append(x)  # no push method
+x = q.popleft()  # return oldest elem
+q.pop() # return newest element 
 ...
 sz = len(q)
 list(q)
