@@ -11,6 +11,8 @@ ex: 5 // 2 = 2
 if key in d:
 if x:
 if not stack:  # same as java if(stack.isEmpty())
+if key in memo # safe for key's node present -vs- if memo[key]  # would KeyError
+
 ```
 
 # ternary
