@@ -25,6 +25,11 @@ status = "Adult" if age >= 18 else "Minor"
 ```
 third = str(int(first) + int(second))
 ```
+# bit
+```
+&  # bitwise and
+>> # bitwise shift
+```
 
 # str
 ```
