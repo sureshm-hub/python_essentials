@@ -1,3 +1,4 @@
+import collections
 from typing import List, Iterator, Optional
 
 # """
@@ -29,39 +30,21 @@ class NestedInteger:
 
 class NestedIterator:
     def __init__(self, nestedList: [NestedInteger]):
-        self.stack: List[Iterator["NestedInteger"]] = []
-        if nestedList is not None:
-            self.stack.append(iter(nestedList))
-        self._next: Optional[int] = None # cached next integer
-
-    def _advance(self) -> bool:
-        while self.stack:
-            it = self.stack[-1]
-            try:
-                cur = next(it)
-            except StopIteration:
-                self.stack.pop()
-                continue
-
-            if cur.isInteger():
-                self._next = cur.getInteger()
-                return True
-            else:
-                self.stack.append(iter(cur.getList()))
-        return False
+        self.q = collections.deque()
+        self._addInteger(nestedList)
 
     def next(self) -> int:
-        if not self.hasNext():
-            raise StopIteration
-        ans = self._next
-        self._next = None
-        return ans
+        return self.q.popleft()
 
     def hasNext(self) -> bool:
-        if self._next is not None:
-            return True
-        return self._advance()
+        return self.q
 
+    def _addInteger(self, nested_list: [NestedInteger]) -> None:
+        for ni in nested_list:
+            if ni.isInteger():
+                self.q.append(ni.getInteger())
+            else:
+                self._addInteger(ni.getList())
 
 # Your NestedIterator object will be instantiated and called as such:
 # i, v = NestedIterator(nestedList), []
