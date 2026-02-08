@@ -6,6 +6,7 @@ It divides the number and rounds down to the nearest whole integer
 ex: 5 // 2 = 2
 ```
 
+
 # if exists
 ```
 if key in d:
