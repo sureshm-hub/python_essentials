@@ -1,5 +1,4 @@
 import collections
-from typing import List, Iterator, Optional
 
 # """
 # This is the interface that allows for creating nested lists.
