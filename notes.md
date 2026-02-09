@@ -89,6 +89,8 @@ for i, j in zip(range(3), range(10, 13)):
 
 # collections
 Built-in: list, dict, set, tuple "immutable"
+Dict, List, Set -> from typing (mostly legacy now)
+dict[int, int] -> modern, clean, recommended
 collections module (standard library): deque, Counter, defaultdict, OrderedDict (mostly historical now), namedtuple
 itertools module (iterables - sorting, grouping, chaining): chain, product, groupby, islice
 collections.abc (Typed/abstract interfaces): Iterable, Mapping, Sequence
@@ -158,6 +160,8 @@ my_set.add(elem)
 map = {}
 map["key"] = val
 map.get(key, default_val)
+
+if key in map:  # check if key in map without raising KeyError
 ```
 
 defaultdict (avoids “if key not present” checks) # key not found error
@@ -226,6 +230,7 @@ use next() to get the next value
 dunder methods in python oops
 
 self -> for providing behavior methods
+invoke behavior methods using self.method
 
 @classmethod & cls -> for alternate constructors or factory patterns.
 
