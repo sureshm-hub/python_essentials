@@ -38,7 +38,14 @@ s = ""
 last_char = s[-1]
 splice_excl_last_char = s[:-1]
 s[a:b]    # b excluded
-idx = ord(c) - ord('a') # Python string/char math: c - 'a' doesn’t work in Python (chars aren’t ints). 
+idx = ord(c) - ord('a') # Python string/char math: c - 'a' doesn’t work in Python (chars aren’t ints).
+
+vowels = "aeiouAEIOU"
+# python doesn't have chars
+chars = list(s)
+s = "".join(chars)
+chars[i] not in vowels
+len(s)
 ```
 
 # formatted strings
