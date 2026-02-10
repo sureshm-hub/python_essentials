@@ -34,6 +34,7 @@ third = str(int(first) + int(second))
 
 # str
 ```
+strings are immutable
 s = ""
 last_char = s[-1]
 splice_excl_last_char = s[:-1]
@@ -46,6 +47,9 @@ chars = list(s)
 s = "".join(chars)
 chars[i] not in vowels
 len(s)
+
+index() method raises a ValueError exception if the substring is not found 
+find() method returns -1 if substring not found
 ```
 
 # formatted strings
