@@ -164,9 +164,11 @@ stack.pop()
 my_set.update(list_to_add)
 my_set |= set(my_list)
 my_set.add(elem)
+my_set= {}
+my_set = {0} # add default val of zero
 ```
 
-## hashmap
+## dict
 ```
 map = {}
 map["key"] = val
@@ -207,6 +209,7 @@ q = deque()
 q.append(x)  # no push method
 x = q.popleft()  # return oldest elem
 q.pop() # return newest element 
+q = deque([0]) # add default val of zero
 ...
 sz = len(q)
 list(q)
