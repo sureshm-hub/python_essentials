@@ -70,6 +70,8 @@ max_val = max(my_list)
 longest_string = max(my_string_list, key=len)
 map_largest_key = max(my_map)
 map_largets_val = max(my_map, key=lambda k: map[k])
+pow(base, exp) # allows -ve exponent e.g., 2 ** 3 = 8 & 2 ** -3 == 0.125
+pow(base, exp, mod)
 ```
 
 # loop styles
@@ -83,7 +85,7 @@ range (n - 1, -1, -1) # (n, 0]
 ...
 for i in range(n):
 for x in arr:
-for i, x in enumerate(nums):
+for i, x in enumerate(nums):  # index and the value
 for key in map:
 # Iterate with 'i' from 0-2 and 'j' from 10-12 in parallel
 for i, j in zip(range(3), range(10, 13)):

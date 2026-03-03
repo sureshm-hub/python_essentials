@@ -2,7 +2,7 @@ from typing import List
 
 # https://leetcode.com/problems/wiggle-sort-ii
 #
-# straight splice won't If you just take the second half and interleave it forward with the first half,
+# straight splice won't work If you just take the second half and interleave it forward with the first half,
 # duplicates can sit next to each other and break the < > < > pattern.
 class Solution:
     def wiggleSort(self, nums: List[int]) -> None:
