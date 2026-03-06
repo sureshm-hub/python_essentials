@@ -194,12 +194,13 @@ from collections import Counter
 freq = Counter(arr) # freq is a map 
 ```
 ## heap
-heapq # python's min-heap 
+heapq # python's min-heap
 ```
 import heapq
 heapq.heappush(h, x)
 x = heapq.heappop(h)
 ```
+for tuple's heapq uses the natural tuple ordering: compare field 1, then field 2 if tied, then field 3, etc.
 
 ## deque
 ```
@@ -216,12 +217,49 @@ q = deque([0]) # add default val of zero
 sz = len(q)
 list(q)
 ```
+## generators
+* a lazily evaluated & memory efficient type of function or expression that produces a sequence of values one at a 
+  time, only when requested
+* unlike functions which returns results and terminate, a generator yields a value and can puase execution saving 
+  it's state to pick up from where it left off
 
 ## comprehensions
+* concise syntax for creating new sequences (lists, dictionaries, sets & generators) from existing iterables using 
+  single line of code
+
+### List Comprehensions
 ```
 [print(x) for x in the_list]
 [x for x in employees if "su" in x]
 [x if x == 'banana'  else x for x in fruits]
+```
+
+## Set Comprehension
+```python
+{x ** 2 for x in range(5)}
+```
+
+# dict Comprehension
+```python
+{x : x **2 for x in range(3)}
+```
+
+### generator Comprehensions
+```python
+# Generator expressions don't use yield 
+min(x ** 2 for x in range(5))
+```
+# generator functions
+yield and execution is paused & state is saved
+use next() to get the next value
+
+```python
+def get_cost(i, j):
+    for k in range (i, j + 1):
+        yield max(get_cost(i, k - 1), get_cost(k + 1, j)) + k
+
+min(get_cost(i, j)) # use yield
+
 ```
 
 ## Iterator
@@ -237,10 +275,6 @@ StopIteration
 ```
 lambda x, y : x+y
 ```
-
-# generators
-yield and execution is paused & state is saved
-use next() to get the next value
 
 # OOPS
 dunder methods in python oops
