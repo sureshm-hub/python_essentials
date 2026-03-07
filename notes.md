@@ -351,6 +351,19 @@ print(f"Equality check: {person1 == person2}")
 # Output: Equality check: False
 ```
 
+# functools
+
+```python
+@functools.lru_cache(maxsize=128)
+@functools.cache  # is same as @functools.lru_cache(None)
+```
+
+There are two ways to correctly apply the decorators:
+1. Without parentheses (as a direct decorator):
+@functools.cache
+2. With parentheses (when passing arguments):
+@functools.lru_cache
+
 # modules
 * A Python module is simply a .py file. The file name (without the extension) is the module name
 
