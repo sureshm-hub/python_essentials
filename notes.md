@@ -273,7 +273,11 @@ StopIteration
 
 # lambdas
 ```
-lambda x, y : x+y
+sum = lambda x, y : x+y
+sum(2, 3)
+
+# filter df rows with lambda
+filtered_df = df.filter(lambda row: row['name'].startswith('A'))
 ```
 
 # OOPS
@@ -503,3 +507,79 @@ a separate python env for each project
   * Class: PascalCase (the type it defines)
 
 # concurrency, parallelism & async
+## threading:
+  * Pass a target function (preferred)
+  * lambda
+  * Subclass Thread and override run()
+  * Use a callable object (__call__)
+    * This combines the flexibility of the target approach with the statefulness of subclassing. The callable
+      object holds state, but isn't coupled to Thread.
+### Thread Lifecycle Management
+* Calling start() tells Python to begin executing the thread's run() method in a new thread of control
+* The join() method blocks the calling thread until the target thread terminates
+* No interrupt() in Python, uses cooperative cancellation with threading primitives like Event
+
+### Returning Results from Threads
+* Shared Variables with Locks
+* Queue-Based Communication
+* Using concurrent.futures or executor.map (for simpler cases)
+* Thread-Local Storage
+
+### Exception Handling in Threads
+* Exceptions in threads don't propagate to the parent thread. They must be handled within the thread
+* For more sophisticated exception handling, use concurrent.futures
+* Global Exception Handler: You can set a global exception handler for uncaught exceptions in threads
+
+
+### Thread Synchronization Primitives
+* Lock: provides mutual exclusion
+* RLock: RLock (reentrant lock) allows the same thread to acquire the lock multiple times.
+    * This is useful when a method that holds a lock calls another method that also needs the lock.
+* Event: Event provides simple signaling between threads
+    * One thread can wait for a signal, and another can set it.
+* Condition: Condition allows threads to wait for arbitrary conditions to become true.
+    * It combines a lock with the ability to wait and notify.
+* Semaphore limits the number of threads that can access a resource simultaneously. 
+  * Think of it as a lock with a counter.
+    
+## GIL
+### GIL Internals
+* GIL is a mutex that protects access to Python objects, preventing multiple threads from executing Python bytecode
+  simultaneously. this has 2 consequences:
+    * Python threads don't speed up CPU-bound work on multi-core machines.
+    * they remain incredibly useful for I/O-bound tasks where threads spend most of their time waiting for external  
+      resources, as the GIL is released during I/O operations.
+* Threads have 3 states w.r.t GIL: Holding, Released, Waiting
+* GIL exists to facilitate garbage collection and multiple threads can corrupt the count and cause memory leaks
+* Fine-grained locking adds overhead to every object operation, Since most Python programs are single-threaded or 
+  I/O-bound, this trade-off was rejected.
+* GIL uses a time-based switching mechanism. By default, a thread can hold the GIL for at most 5 milliseconds
+* GIL Release Points:
+  - I/O operations: Reading from files, network sockets, or pipes
+  - Sleep: time.sleep() releases the GIL while waiting
+  - C extensions: Many C extensions release the GIL during computation
+  - Check interval: After approximately 5ms of execution
+### Working Around the GIL:
+* GIL limits CPU-bound parallelism, but python provides several ways to achieve true parallelism when you need it
+* Multiprocessing: stop fighting the GIL and use processes instead of threads
+  * multiprocessing module creates separate processes, each with its own Python interpreter and its own GIL. Since  
+    the GILs are independent, the processes run truly in parallel.
+  * trade-off: processes have higher overhead than threads, and sharing data between them requires explicit  
+    mechanisms (queues, shared memory, pipes).
+  * **2 api models:**
+    * pool
+    * thread like start() and join()
+  * **Inter Process Communication (IPC):** Sharing data across Process
+    * Queue: Message Passing for Multiple Processes
+    * Pipe: Direct Two-Way Communication
+    * Shared Memory: High-Performance Data Sharing
+* C Extensions: NumPy, SciPy, scikit-learn
+  * Many performance-critical libraries are written in C and release the GIL during computation, you still use  
+    threads, but the heavy lifting happens in GIL-free C code.
+* Option 3: asyncio for I/O Concurrency
+  * For I/O-bound code, there is another approach that sidesteps the GIL entirely: asyncio
+  * Instead of using threads, asyncio uses a single thread that cooperatively switches between tasks at await points.
+    Since there is only one thread, the GIL is never contended.
+  * asyncio is ideal for network-heavy applications like web servers, API clients, and crawlers
+* Option 4: Cython with nogil
+  * Cython offers a way to write Python-like code that compiles to C and can release the GIL
