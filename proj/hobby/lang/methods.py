@@ -22,3 +22,5 @@ class Car:
 car = Car.from_string("Generic-Tesla")
 print(car.display())
 print(Car.is_valid_model("Cybertruck"))
+another_car = Car("lexus")
+print(another_car.display())
