@@ -16,6 +16,19 @@ if key in memo # safe for key's node present -vs- if memo[key]  # would KeyError
 
 ```
 
+# if, elif, else
+```python
+
+if condition:
+    
+if condition:
+elif condition:
+else:
+    
+if condition:
+else condition:
+
+```
 # ternary
 ```
 age = 25
@@ -131,7 +144,8 @@ my_array = arr.array('i', [1, 2, 3, 4, 5])
 ```
 
 ## numpy
-The NumPy library is the standard for numerical operations in Python, offering powerful, multidimensional array objects (ndarray).
+The NumPy library is the standard for numerical operations in Python, offering powerful, multidimensional array  
+objects (ndarray).
 
 import numpy as np
 ``` Create a 2D array (matrix)
@@ -326,37 +340,9 @@ nonlocal --> nested functions
 
 # dataclass
 * special type of decorator for storing data with minimum boilerplate code
-```python
-from dataclasses import dataclass
-
-@dataclass
-class Person:
-    name: str
-    age: int
-    email: str
-    height: float = 0.0 # Default value
-
-# Instantiating the class
-person1 = Person("Alice", 30, "alice@example.com", height=1.75)
-person2 = Person("Bob", 25, "bob@example.com")
-person3 = Person("Alice", 30, "alice@example.com", height=1.75)
-
-# Automatically generated methods in action:
-
-# __repr__ (printing the object)
-print(f"Representation: {person1}")
-# Output: Representation: Person(name='Alice', age=30, email='alice@example.com', height=1.75)
-
-# __eq__ (comparing objects by value)
-print(f"Equality check: {person1 == person3}")
-# Output: Equality check: True
-
-print(f"Equality check: {person1 == person2}")
-# Output: Equality check: False
-```
+* mutable by default
 
 # functools
-
 ```python
 @functools.lru_cache(maxsize=128)
 @functools.cache  # is same as @functools.lru_cache(None)
@@ -529,7 +515,6 @@ a separate python env for each project
 * Exceptions in threads don't propagate to the parent thread. They must be handled within the thread
 * For more sophisticated exception handling, use concurrent.futures
 * Global Exception Handler: You can set a global exception handler for uncaught exceptions in threads
-
 
 ### Thread Synchronization Primitives
 * Lock: provides mutual exclusion
