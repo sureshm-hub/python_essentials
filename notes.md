@@ -168,6 +168,14 @@ tuple = (4,3,2,1)
 sorted_tuple = sorted(tuple)
 ```
 
+## tuple
+
+```python
+tuple = (1,2,3,4)
+my_tuple = tuple([1,2,3,4])
+
+tuple[int,...] # tuple type of arbitrary length
+```
 ## list
 ```
 stack = []
