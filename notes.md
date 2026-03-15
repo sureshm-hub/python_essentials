@@ -104,7 +104,6 @@ for key in map:
 for i, j in zip(range(3), range(10, 13)):
     print(f"i: {i}, j: {j}")
 
-
 ...
 
 [0] * 26 # works for primitive
@@ -114,13 +113,13 @@ for i, j in zip(range(3), range(10, 13)):
 ```
 
 # collections
-Built-in: list, dict, set, tuple "immutable"
-Dict, List, Set -> from typing (mostly legacy now)
-dict[int, int] -> modern, clean, recommended
-collections module (standard library): deque, Counter, defaultdict, OrderedDict (mostly historical now), namedtuple
-itertools module (iterables - sorting, grouping, chaining): chain, product, groupby, islice
-collections.abc (Typed/abstract interfaces): Iterable, Mapping, Sequence
-built-in functions: sorted(), min(), max(), plus modules like itertools.
+* **Built-in:** list, dict, set, tuple "immutable"
+* **from typing (mostly legacy now)**: Dict, List, Set 
+* **modern, clean, recommended:** dict[int, int]
+* **collections module (standard library):** deque, Counter, defaultdict, OrderedDict (mostly historical now), namedtuple
+* **itertools module (iterables - sorting, grouping, chaining):** chain, product, groupby, islice
+* **collections.abc (Typed/abstract interfaces):** Iterable, Mapping, Sequence
+* **built-in functions:** sorted(), min(), max(), plus modules like itertools.
 
 ## arr
 Python lists function as arrays - can store items of mixed types.
@@ -130,6 +129,7 @@ my_list.append(60) # Adds 60 to the end
 my_list.insert(1, 15) # Inserts 15 at index 1
 my_list.reverse()
 my_list.append([60, 70]) vs my_list.extend([60, 70])
+my_list[0] # access  by index
 ```
 
 large arrays of a single, primitive data type (like integers or floats), the array module is more memory-efficient than a list.
@@ -182,6 +182,8 @@ stack = []
 stack.append(ch)
 stack.pop()
 "".join(stack) # stack to str
+stack[0] # access by index
+del stack[5] # del stack element 
 ```
 ## set
 ```
@@ -199,6 +201,8 @@ map["key"] = val
 map.get(key, default_val)
 
 if key in map:  # check if key in map without raising KeyError
+
+del map["key"] # del map element with key
 ```
 
 defaultdict (avoids “if key not present” checks) # key not found error
@@ -220,7 +224,7 @@ heapq # python's min-heap
 ```
 import heapq
 heapq.heappush(h, x)
-x = heapq.heappop(h)
+x = heapq.heappop(h) # no poll method
 ```
 for tuple's heapq uses the natural tuple ordering: compare field 1, then field 2 if tied, then field 3, etc.
 
@@ -233,7 +237,7 @@ q = deque(i for i in range(n) if deg[i] == 1)
 q = deque()
 q.append(x)  # no push method
 x = q.popleft()  # return oldest elem
-q.pop() # return newest element 
+q.pop() # return newest element, no poll method
 q = deque([0]) # add default val of zero
 ...
 sz = len(q)
