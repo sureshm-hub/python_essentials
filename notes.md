@@ -183,7 +183,8 @@ stack.append(ch)
 stack.pop()
 "".join(stack) # stack to str
 stack[0] # access by index
-del stack[5] # del stack element 
+del stack[5] # del stack element
+removed_element = my_list.pop(index_to_delete) # remove elemnet while accessing it's current val
 ```
 ## set
 ```
