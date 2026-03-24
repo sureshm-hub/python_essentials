@@ -4,8 +4,12 @@
 It divides the number and rounds down to the nearest whole integer
 
 ex: 5 // 2 = 2
-```
 
+%: modulo operator
+++ --  # python doesn't have ++ or --
+a += 1 # python supports +=
+b -= 1 # python supports -=
+```
 
 # if exists
 ```
@@ -85,6 +89,7 @@ map_largest_key = max(my_map)
 map_largets_val = max(my_map, key=lambda k: map[k])
 pow(base, exp) # allows -ve exponent e.g., 2 ** 3 = 8 & 2 ** -3 == 0.125
 pow(base, exp, mod)
+random.randomint(lower, upper)  # random in [lower, upper]
 ```
 
 # loop styles
